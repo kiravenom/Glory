@@ -9,3 +9,4 @@ pycryptodome==3.18.0
 protobuf==4.24.4
 pyjwt==2.8.0
 asyncio==3.4.3
+php
