@@ -1,15 +1,19 @@
 #!/bin/bash
 
+# Create necessary directory if it doesn't exist
+mkdir -p GUILD-BOOST
+
 echo "[+] Starting Guild Boost API (spam.py)..."
 cd GUILD-BOOST
-python spam.py &
+python3 spam.py &
 API_PID=$!
 
 sleep 2
 
 echo "[+] Starting Web UI (index.php)..."
 cd ..
-php -S 127.0.0.1:8000
+# Use Render's dynamic port
+php -S 0.0.0.0:$PORT
 
-# जब PHP बंद हो, Python भी बंद
-kill $API_PID
+# When PHP stops, also stop Python
+kill $API_PID 2>/dev/null || true
